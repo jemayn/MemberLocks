@@ -61,9 +61,6 @@ public class SeedMembersController : UmbracoApiController
         memberWithIdentity.RawPasswordValue = _passwordHasher.HashPassword("12345678");
 
         _memberService.Save(memberWithIdentity);
-
-        _memberService.ReplaceRoles([memberWithIdentity.Username], member.MemberGroup.ToArray());
-
         return memberWithIdentity;
     }
 
@@ -82,7 +79,6 @@ public class SeedMembersController : UmbracoApiController
         existingMember.IsApproved = true;
         existingMember.RawPasswordValue = _passwordHasher.HashPassword("12345678");
         _memberService.Save(existingMember);
-        _memberService.ReplaceRoles([existingMember.Username], member.MemberGroup.ToArray());
 
         return existingMember;
     }
@@ -92,5 +88,4 @@ public class MemberData
 {
     public string Username { get; set; }
     public string Email { get; set; }
-    public List<string> MemberGroup { get; set; }
 }
