@@ -57,7 +57,7 @@ public class LoginController : SurfaceController
         {
             return Ok("H5YR");
         }
-        return BadRequest();
+        return Unauthorized();
     }
 }
 
